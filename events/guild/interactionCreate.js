@@ -2,10 +2,10 @@ const { ActionRowBuilder, Events, ModalBuilder, TextInputBuilder, TextInputStyle
 
 module.exports = async(Discord,bot,inter)=>{
   if(inter.isButton()){
-    const modal = bot.modalInter.get(inter.customId);
-    if(modal){
+    const buttons = bot.buttons.get(inter.customId);
+    if(buttons){
       try{
-        await modal.execute(inter,Discord,bot);
+        await buttons.execute(inter,Discord,bot);
       }catch(err){
         await inter.reply({content:"好像哪裡有問題...",ephemeral:true});
         console.error(err);
@@ -27,8 +27,16 @@ module.exports = async(Discord,bot,inter)=>{
     }
     
     }else if(inter.isModalSubmit()){
-      //const favoriteColor = interaction.fields.getTextInputValue('favoriteColorInput');
-      await inter.reply({content:"ok",ephemeral:true});
+      
+      const modals = bot.modals.get(inter.customId);
+      if(modals){
+        try{
+          await modals.execute(inter,Discord,bot);
+        }catch(err){
+          await inter.reply({content:"好像哪裡有問題...",ephemeral:true});
+          console.error(err);
+        }
+      }
 
     }
   
