@@ -1,7 +1,7 @@
-//const keep_alive = require('../../keep_alive.js')
+const keep_alive = require('../../keep_alive.js')
 
 module.exports = async (Discord,bot) => {
-  //keep_alive();
+  keep_alive();
   console.log(`${bot.user.tag} is online`);
 
   
