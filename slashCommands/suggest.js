@@ -1,23 +1,38 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder,ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
 
 module.exports = {
   data:new SlashCommandBuilder()
-	      .setName('suggest')
-	      .setDescription('提出建議')
-      	.addStringOption(option =>
-	      	option.setName('建議')
-	      		.setDescription('你的建議')
-	      		.setRequired(true)),
+	      .setName('modal')
+	      .setDescription('test')
+      	,
   async execute(inter,Discord){
-    let ebd = new Discord.MessageEmbed()
-          .setTitle('成員建議')
-          .setDescription(inter.options.get('建議').value)
-          .setFooter({text:inter.user.tag})
-          .setColor([255,255,0])
-        await inter.guild.channels.fetch('980109237244006450')
-          .then(async channel=>{
-            await channel.send({embeds:[ebd]})
-        })
-        await inter.reply({content:"已建議管理層，感謝您的建議",ephemeral:true})
+
+    const modal = new ModalBuilder()
+			.setCustomId('myModal')
+			.setTitle('My Modal');
+
+    const favoriteColorInput = new TextInputBuilder()
+			.setCustomId('favoriteColorInput')
+		    // The label is the prompt the user sees for this input
+			.setLabel("What's your favorite color?")
+		    // Short means only a single line of text
+			.setStyle(TextInputStyle.Short);
+
+		const hobbiesInput = new TextInputBuilder()
+			.setCustomId('hobbiesInput')
+			.setLabel("What's some of your favorite hobbies?")
+		    // Paragraph means multiple lines of text.
+			.setStyle(TextInputStyle.Paragraph);
+
+		// An action row only holds one text input,
+		// so you need one action row per text input.
+		const firstActionRow = new ActionRowBuilder().addComponents(favoriteColorInput);
+		const secondActionRow = new ActionRowBuilder().addComponents(hobbiesInput);
+
+		// Add inputs to the modal
+		modal.addComponents(firstActionRow, secondActionRow);
+
+		// Show the modal to the user
+		await inter.showModal(modal);
   }
 }
