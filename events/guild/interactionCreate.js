@@ -1,7 +1,16 @@
 const { ActionRowBuilder, Events, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
 
 module.exports = async(Discord,bot,inter)=>{
-    if(inter.isButton()){
+  if(inter.isButton()){
+    const modal = bot.modalInter.get(inter.customId);
+    if(modal){
+      try{
+        await modal.execute(inter,Discord,bot);
+      }catch(err){
+        await inter.reply({content:"好像哪裡有問題...",ephemeral:true});
+        console.error(err);
+      }
+    }
     
   }else if(inter.isSelectMenu()){
     

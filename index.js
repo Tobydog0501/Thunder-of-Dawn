@@ -18,6 +18,7 @@ const bot = new Client({
 
 bot.commands = new Discord.Collection();
 bot.events = new Discord.Collection();
+bot.modalInter = new Discord.Collection();
 ['command_handler','event_handler'].forEach(handler=>{
   require(`./handlers/${handler}`)(bot,Discord);
 })

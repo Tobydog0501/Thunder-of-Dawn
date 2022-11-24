@@ -5,13 +5,9 @@ const token = process.env.tkn
 
 const commands = [];
 
-
-// Place your client and guild ids here
-const clientId = '926255596129382430';
-const guildId = '926089413933539359';
-
 module.exports = (bot,Discord) =>{
   const SlashcommandFiles = fs.readdirSync('./slashCommands/').filter(file => file.endsWith('.js'));
+  const modals = fs.readdirSync('./modals/').filter(file => file.endsWith('.js'));
   const commandFiles = fs.readdirSync('./commands/').filter(file=>file.endsWith('.js'));
   for (const file of SlashcommandFiles) {
     const command = require(`../slashCommands/${file}`);
@@ -29,6 +25,15 @@ module.exports = (bot,Discord) =>{
           bot.commands.set(aliases,command);
         }
       }
+    }else{
+      continue;
+    }
+  }
+
+  for(const file of modals){
+    const command = require(`../modals/${file}`);
+    if(command.name){
+      bot.modalInter.set(command.name,command);
     }else{
       continue;
     }
