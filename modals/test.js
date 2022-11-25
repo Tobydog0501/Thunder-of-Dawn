@@ -30,7 +30,7 @@ module.exports = {
                     .setCustomId("reject")
                     .setLabel("拒絕考生")
                     .setStyle(ButtonStyle.Danger)
-                    .setDisabled(true)
+                    .setDisabled(false)
         ]);
 
         await chn.send({embeds:[exampleEmbed],components:[row]});

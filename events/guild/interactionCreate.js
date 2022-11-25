@@ -28,10 +28,11 @@ module.exports = async(Discord,bot,inter)=>{
     
     }else if(inter.isModalSubmit()){
       
-      const modals = bot.modals.get(inter.customId);
+      const modals = bot.modals.get(inter.customId.split('-')[0]);
+      const a = inter.customId.split('-')[1]
       if(modals){
         try{
-          await modals.execute(inter,Discord,bot);
+          await modals.execute(inter,Discord,a,bot);
         }catch(err){
           await inter.reply({content:"好像哪裡有問題...",ephemeral:true});
           console.error(err);
