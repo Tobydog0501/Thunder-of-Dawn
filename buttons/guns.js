@@ -4,6 +4,10 @@ module.exports = {
     name:"guns",
 
     async execute(inter,Discord){
+      if(inter.member.roles.cache.some(v=>v.id == "1045664098014203924")){
+        await inter.reply({content:"你已申請過一次",ephemeral:true})
+        return;
+      }
         const modal = new ModalBuilder()
         .setCustomId('guns')
         .setTitle('考試申請');

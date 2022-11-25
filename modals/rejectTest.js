@@ -12,7 +12,8 @@ module.exports = {
             .setDescription(`<@${mem}>的申請失效\n原因：${reason}`)
             .setColor("Yellow");
         
-
+        const memb = await inter.guild.members.fetch(mem);
+        await memb.roles.add("1045664098014203924");
         await chn.send({content:`<@${mem}>`,embeds:[exampleEmbed]});
         await inter.reply({content:`完成`,ephemeral:true})
     }

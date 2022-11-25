@@ -34,6 +34,7 @@ module.exports = {
         ]);
 
         await chn.send({embeds:[exampleEmbed],components:[row]});
-        await inter.reply({content:`申請完成`,ephemeral:true})
+        await inter.member.roles.add("1045664098014203924");
+        await inter.reply({content:`申請完成`,ephemeral:true});
     }
 }
