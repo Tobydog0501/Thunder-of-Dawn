@@ -21,15 +21,18 @@ module.exports = {
             },
         ]});
 
+        let a = inter.message.components[0].components.map((v,i)=>{
+            if(i==0){
+                v.data['disabled']=true;
+            }
+            return v
+        // console.log(v.data)
+        })
+        if(a[0].data['disabled']==a[1].data['disabled']){
+            a[2].data['disabled'] = true
+        }
         const row = new ActionRowBuilder()
-            .setComponents(
-                inter.message.components[0].components.map((v,i)=>{
-                    if(i==0){
-                        v.data['disabled']=true;
-                    }
-                    return v
-                // console.log(v.data)
-                }));
+            .setComponents(a);
         const gun = inter.message.embeds[0].fields[0].value;
         const exampleEmbed = new EmbedBuilder()
             .setTitle("考試申請成功")
