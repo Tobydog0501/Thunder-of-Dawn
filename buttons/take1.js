@@ -1,18 +1,25 @@
+const { PermissionsBitField } = require('discord.js');
+
 module.exports = {
     name:"take1",
 
     async execute(inter,Discord){
-        const member = inter.guild.members.fetch(inter.message.embeds[0].description.match(/[0-9]+/)[0])
-        await inter.guild.channels.create({name:`aa`,parent:"1045350645135327322", permissionOverwrites:[
-            {id:inter.guild.roles.everyone,deny:[
-                'VIEW_CHANNEL'  //sus
-            ]}
-            ,{id:inter.user,allow:[
-                'VIEW_CHANNEL','SEND_MESSAGES'
-            ]}
-            ,{id:member,allow:[
-                'VIEW_CHANNEL','SEND_MESSAGES'
-            ]}
-          ]})
+        const member = await inter.guild.members.fetch(inter.message.embeds[0].description.match(/[0-9]+/)[0]);
+        await inter.guild.channels.create({name:`${member.tag}第一考場`,parent:"1045350645135327322",permissionOverwrites: [
+            {
+                id: inter.guild.id,
+                deny: [PermissionsBitField.Flags.ViewChannel],
+            },
+            {
+                id: inter.user.id,
+                allow: [PermissionsBitField.Flags.ViewChannel],
+            },
+            {
+                id: member.id,
+                allow: [PermissionsBitField.Flags.ViewChannel],
+            },
+        ]});
+        console.log(inter.message.components);
+        await inter.reply({content:"完成",ephermeral:true});
     }
 }

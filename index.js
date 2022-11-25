@@ -25,5 +25,5 @@ bot.modals = new Discord.Collection();
   require(`./handlers/${handler}`)(bot,Discord);
 })
 
-
-bot.login(TOKEN);
+if(true)  //for testing bot
+  bot.login(TOKEN);
