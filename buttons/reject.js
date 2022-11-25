@@ -4,8 +4,9 @@ module.exports = {
     name:"reject",
 
     async execute(inter,Discord){
+        const mem = inter.message.embeds[0].description.match(/[0-9]+/)[0];
         const modal = new ModalBuilder()
-            .setCustomId(`reject-${inter.message.embeds[0].description.match(/[0-9]+/)[0]}`)
+            .setCustomId(`reject-${mem}`)
             .setTitle('拒絕考生');
 
         const reason = new TextInputBuilder()
@@ -31,7 +32,10 @@ module.exports = {
                     return v
                 // console.log(v.data)
             }));
+        
+        const memb = await inter.guild.members.fetch(mem);
         await inter.message.edit({components:[row]})
+        await memb.roles.remove("1045664098014203924");
         // Show the modal to the user
         await inter.showModal(modal);
     }
