@@ -21,18 +21,16 @@ module.exports = {
             },
         ]});
 
-        let a = inter.message.components[0].components.map((v,i)=>{
-            if(i==1){
-                v.data['disabled']=true;
-            }
-            return v
-        // console.log(v.data)
-        })
-        if(a[0].data['disabled']==a[1].data['disabled']){
-            a[2].data['disabled'] = true
-        }
+
         const row = new ActionRowBuilder()
-            .setComponents(a);
+            .setComponents(
+                inter.message.components[0].components.map((v,i)=>{
+                    if(i==1||i==2){
+                        v.data['disabled']=true;
+                    }
+                    return v
+            // console.log(v.data)
+            }));
 
         const gun = inter.message.embeds[0].fields[1].value;
         const exampleEmbed = new EmbedBuilder()
