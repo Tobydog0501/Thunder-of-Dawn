@@ -19,7 +19,7 @@ module.exports = {
         .setDescription("Undefined")
         .setColor("Green")
 
-		await inter.reply({ embeds: [exampleEmbed] , components: [row] });
+	await inter.reply({ embeds: [exampleEmbed] , components: [row] });
     
   }
 }
