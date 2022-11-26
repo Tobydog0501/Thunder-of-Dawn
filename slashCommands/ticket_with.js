@@ -12,6 +12,7 @@ module.exports = {
                 .setRequired(true))
     ,
     async execute(inter,Discord){
+      return;
       await inter.deferReply({ephemeral:true});
         var target = inter.options.get('成員').value.replace('<@!','').replace('>','');
         if(target.length!=18){
