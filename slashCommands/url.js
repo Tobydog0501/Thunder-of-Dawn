@@ -10,12 +10,12 @@ module.exports = {
         await inter.reply({content:"你不能這樣做",ephemeral:true});
         return;
     }
-    const invite = await inter.guild.invites.create("1044265231842545756",{maxAge:0,maxUses:1})
+    const invite = await inter.guild.invites.create("1044265231842545756",{maxAge:0,maxUses:1,unique:true});
     const ebd = new EmbedBuilder()
         .setTitle("邀請連結生成成功")
         .setDescription(`invite link: ${invite} `)
         .setFooter({text:"此連結僅能使用一次"})
-        .setColor("Random")
+        .setColor("Random");
 
 
     await inter.reply({embeds:[ebd],ephemeral:true});
