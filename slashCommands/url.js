@@ -6,7 +6,7 @@ module.exports = {
 	      .setDescription('創建邀請')
       	,
   async execute(inter,Discord){
-    if(!inter.member.roles.cache.some(v=>v.id=="1044264943874224228")||!inter.member.roles.cache.some(v=>v.id=="1044264999100612638")){
+    if(!inter.member.roles.cache.some(v=>v.id=="1044264943874224228")&&!inter.member.roles.cache.some(v=>v.id=="1044264999100612638")){
         await inter.reply({content:"你不能這樣做",ephemeral:true});
         return;
     }
