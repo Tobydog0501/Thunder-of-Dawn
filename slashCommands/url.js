@@ -14,7 +14,8 @@ module.exports = {
     const ebd = new EmbedBuilder()
         .setTitle("邀請連結生成成功")
         .setDescription(`invite link: ${invite} `)
-        .setFooter("此連結僅能使用一次")
+        .setFooter({text:"此連結僅能使用一次"})
+        .setColor("Random")
 
 
     await inter.reply({embeds:[ebd],ephemeral:true});
