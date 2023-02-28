@@ -5,7 +5,6 @@ var ui = JSON.parse(fs.readFileSync('./env.json', 'utf-8'));
 
 
 module.exports = async (Discord,bot,msg)=>{
-    console.log("trigger")
     if(msg.content.length<=3||msg.author.bot||msg.content.startsWith("t/")){
         return;
     }
