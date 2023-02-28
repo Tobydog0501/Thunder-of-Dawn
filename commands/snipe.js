@@ -38,9 +38,9 @@ module.exports = {
                 ebd.addFields(s[1]);
                 ebd.addFields(s[2]);
             }
-            msg.reply({embeds:[ebd]})
+            await msg.reply({embeds:[ebd]})
         }catch (e){
-            msg.reply("查無訊息")
+            await msg.reply("查無訊息")
         }
       
     }
