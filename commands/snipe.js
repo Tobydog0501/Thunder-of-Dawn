@@ -40,7 +40,6 @@ module.exports = {
             }
             msg.reply({embeds:[ebd]})
         }catch (e){
-            console.log(e)
             msg.reply("查無訊息")
         }
       
