@@ -1,4 +1,4 @@
-const prefix = "td$"
+const prefix = "t/"
 
 module.exports = async (Discord,bot,msg)=>{
   if(msg.author.bot){
