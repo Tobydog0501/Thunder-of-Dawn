@@ -35,8 +35,8 @@ module.exports = {
             
             for(var s of msgList){
                 ebd.addFields(s[0]);
-                ebd.addFields(s[1]);
                 ebd.addFields(s[2]);
+                ebd.addFields(s[1]);
             }
             await msg.reply({embeds:[ebd]})
         }catch (e){
