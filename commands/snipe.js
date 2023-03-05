@@ -29,20 +29,21 @@ module.exports = {
             })
             if(msgList.length>25){
                 var index = 0
-                while(msgList.length>25){
+                while(msgList.length){
                     let ebd = new EmbedBuilder()
                         .setTitle("訊息刪除查詢功能")
                         .setColor("Random")
                         .setDescription("於本頻道刪除的訊息:")
                         .setTimestamp();
-                    const a = msgList.slice(index,(index+25<=msgList.length?index+25:undefined));
+
+                    const a = msgList.slice(index,(index+7<=msgList.length?index+7:undefined));
                     for(var s of a){
                         ebd.addFields(s[0]);
                         ebd.addFields(s[2]);
                         ebd.addFields(s[1]);
                     }
                     await msg.channel.send({embeds:[ebd]});
-                    index += 26
+                    msgList.splice(0,8)
                 }
             }else{
                 let ebd = new EmbedBuilder()
@@ -60,6 +61,7 @@ module.exports = {
             
             
         }catch (e){
+            console.error(e);
             await msg.reply("查無訊息")
         }
       
