@@ -5,7 +5,7 @@ var ui = JSON.parse(fs.readFileSync('./env.json', 'utf-8'));
 
 
 module.exports = async (Discord,bot,msg)=>{
-    if(msg.content.length<=3||msg.author.bot||msg.content.startsWith("t/")){
+    if(msg.content.length<=3||msg.author.bot||msg.content.startsWith("t/")||msg.content.startsWith("&")){
         return;
     }
     let inputVal = {
