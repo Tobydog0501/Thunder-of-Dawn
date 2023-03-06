@@ -27,7 +27,7 @@ module.exports = {
                     inline:true
                 }])
             })
-            if(msgList.length>25){
+            if(msgList.length>7){
                 var index = 0
                 while(msgList.length){
                     let ebd = new EmbedBuilder()
